@@ -319,13 +319,6 @@
 
         .improvement-text {
             color: #4a5568;
-            margin-bottom: 8px;
-        }
-
-        .improvement-reason {
-            color: #718096;
-            font-size: 0.9em;
-            font-style: italic;
         }
 
         .scores {
@@ -1458,7 +1451,6 @@ Analiza el texto y proporciona mejoras específicas.`;
                         <div class="improvement-item">
                             <div class="improvement-type">${imp.type || 'Mejora'}</div>
                             <div class="improvement-text">${imp.change || imp.issue || imp.recommendation || ''}</div>
-                            <div class="improvement-reason">${imp.reason || ''}</div>
                         </div>
                     `;
                 });
