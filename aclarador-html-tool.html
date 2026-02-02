@@ -316,30 +316,6 @@
             overflow-y: auto;
         }
 
-        .improvements-section {
-            margin-top: 20px;
-        }
-
-        .improvement-item {
-            background: #f7fafc;
-            border-left: 4px solid #ff0000;
-            padding: 15px;
-            margin-bottom: 12px;
-            border-radius: 0;
-        }
-
-        .improvement-type {
-            font-weight: 700;
-            color: #ff0000;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            font-size: 0.85em;
-        }
-
-        .improvement-text {
-            color: #4a5568;
-        }
-
         .scores {
             display: flex;
             gap: 20px;
@@ -1462,20 +1438,6 @@ Analiza el texto y proporciona mejoras específicas.`;
             const card = document.createElement('div');
             card.className = 'result-card';
 
-            let improvementsHTML = '';
-            if (result.improvements && result.improvements.length > 0) {
-                improvementsHTML = '<div class="improvements-section"><h3>📝 Mejoras Aplicadas:</h3>';
-                result.improvements.forEach(imp => {
-                    improvementsHTML += `
-                        <div class="improvement-item">
-                            <div class="improvement-type">${imp.type || 'Mejora'}</div>
-                            <div class="improvement-text">${imp.change || imp.issue || imp.recommendation || ''}</div>
-                        </div>
-                    `;
-                });
-                improvementsHTML += '</div>';
-            }
-
             const qualityScore = result.validation?.qualityScore || 0;
             const readabilityScore = result.style?.readabilityScore || 0;
 
@@ -1497,8 +1459,6 @@ Analiza el texto y proporciona mejoras específicas.`;
                         <div class="text-content">${escapeHtml(result.finalText.substring(0, 500))}${result.finalText.length > 500 ? '...' : ''}</div>
                     </div>
                 </div>
-
-                ${improvementsHTML}
 
                 <div class="scores">
                     <div class="score-card">
