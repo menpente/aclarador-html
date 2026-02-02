@@ -44,21 +44,37 @@
         header {
             background: #000000;
             color: white;
-            padding: 30px 20px;
+            padding: 20px 30px;
             margin-bottom: 30px;
             border-radius: 0;
             box-shadow: none;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .header-logo {
+            flex-shrink: 0;
+        }
+
+        .header-logo img {
+            height: 70px;
+            width: auto;
+        }
+
+        .header-content {
+            flex: 1;
         }
 
         h1 {
-            font-size: 2.2em;
-            margin-bottom: 10px;
+            font-size: 1.8em;
+            margin-bottom: 5px;
             font-weight: 600;
         }
 
         .subtitle {
-            font-size: 1.1em;
-            opacity: 0.9;
+            font-size: 1em;
+            opacity: 0.8;
         }
 
         .controls {
@@ -316,30 +332,6 @@
             overflow-y: auto;
         }
 
-        .improvements-section {
-            margin-top: 20px;
-        }
-
-        .improvement-item {
-            background: #f7fafc;
-            border-left: 4px solid #ff0000;
-            padding: 15px;
-            margin-bottom: 12px;
-            border-radius: 0;
-        }
-
-        .improvement-type {
-            font-weight: 700;
-            color: #ff0000;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            font-size: 0.85em;
-        }
-
-        .improvement-text {
-            color: #4a5568;
-        }
-
         .scores {
             display: flex;
             gap: 20px;
@@ -465,8 +457,13 @@
 <body>
     <div class="container">
         <header>
-            <h1>🔍 Aclarador - Análisis de Lenguaje Claro</h1>
-            <p class="subtitle">Herramienta HTML para analizar documentos en carpetas usando principios de lenguaje claro</p>
+            <div class="header-logo">
+                <img src="https://www.calamoycran.com/wp-content/uploads/logo-blog.png" alt="Cálamo & Cran">
+            </div>
+            <div class="header-content">
+                <h1>Aclarador - Análisis de Lenguaje Claro</h1>
+                <p class="subtitle">Herramienta para analizar documentos usando principios de lenguaje claro</p>
+            </div>
         </header>
 
         <div class="controls">
@@ -1462,20 +1459,6 @@ Analiza el texto y proporciona mejoras específicas.`;
             const card = document.createElement('div');
             card.className = 'result-card';
 
-            let improvementsHTML = '';
-            if (result.improvements && result.improvements.length > 0) {
-                improvementsHTML = '<div class="improvements-section"><h3>📝 Mejoras Aplicadas:</h3>';
-                result.improvements.forEach(imp => {
-                    improvementsHTML += `
-                        <div class="improvement-item">
-                            <div class="improvement-type">${imp.type || 'Mejora'}</div>
-                            <div class="improvement-text">${imp.change || imp.issue || imp.recommendation || ''}</div>
-                        </div>
-                    `;
-                });
-                improvementsHTML += '</div>';
-            }
-
             const qualityScore = result.validation?.qualityScore || 0;
             const readabilityScore = result.style?.readabilityScore || 0;
 
@@ -1497,8 +1480,6 @@ Analiza el texto y proporciona mejoras específicas.`;
                         <div class="text-content">${escapeHtml(result.finalText.substring(0, 500))}${result.finalText.length > 500 ? '...' : ''}</div>
                     </div>
                 </div>
-
-                ${improvementsHTML}
 
                 <div class="scores">
                     <div class="score-card">
