@@ -44,21 +44,37 @@
         header {
             background: #000000;
             color: white;
-            padding: 30px 20px;
+            padding: 20px 30px;
             margin-bottom: 30px;
             border-radius: 0;
             box-shadow: none;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .header-logo {
+            flex-shrink: 0;
+        }
+
+        .header-logo img {
+            height: 70px;
+            width: auto;
+        }
+
+        .header-content {
+            flex: 1;
         }
 
         h1 {
-            font-size: 2.2em;
-            margin-bottom: 10px;
+            font-size: 1.8em;
+            margin-bottom: 5px;
             font-weight: 600;
         }
 
         .subtitle {
-            font-size: 1.1em;
-            opacity: 0.9;
+            font-size: 1em;
+            opacity: 0.8;
         }
 
         .controls {
@@ -441,8 +457,13 @@
 <body>
     <div class="container">
         <header>
-            <h1>🔍 Aclarador - Análisis de Lenguaje Claro</h1>
-            <p class="subtitle">Herramienta HTML para analizar documentos en carpetas usando principios de lenguaje claro</p>
+            <div class="header-logo">
+                <img src="https://www.calamoycran.com/wp-content/uploads/logo-blog.png" alt="Cálamo & Cran">
+            </div>
+            <div class="header-content">
+                <h1>Aclarador - Análisis de Lenguaje Claro</h1>
+                <p class="subtitle">Herramienta para analizar documentos usando principios de lenguaje claro</p>
+            </div>
         </header>
 
         <div class="controls">
